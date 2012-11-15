@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115140505) do
+ActiveRecord::Schema.define(:version => 20121115160304) do
+
+  create_table "pictures", :force => true do |t|
+    t.integer  "feature_id"
+    t.string   "feature_type"
+    t.string   "subtype"
+    t.string   "caption"
+    t.string   "status"
+    t.string   "image"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "projects", :force => true do |t|
     t.string   "title"
