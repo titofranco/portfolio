@@ -1,4 +1,5 @@
-<%= form_for @project, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @project, :html => { :class => 'form-horizontal',
+      :multipart => true } do |f| %>
   <div class="control-group">
     <%= f.label :title, :class => 'control-label' %>
     <div class="controls">
@@ -35,6 +36,25 @@
       <%= f.check_box :status, :class => 'check_box' %>
     </div>
   </div>
+
+  <div class="control-group">
+    <%= label_tag "Images", nil, :class => 'control-label' %>
+  </div>
+
+  <%= f.fields_for :pictures do |pf| %>
+    <div class="control-group">
+      <%= image_tag(pf.object.image_url(:thumb),
+                    :class => 'img-rounded img-l') if pf.object.image? %>
+      <div class="controls">
+        <%= pf.file_field :image %>
+        <%= pf.hidden_field :image_cache %>
+        <label>
+          <%= pf.check_box :remove_image %>
+          Remove Image
+        </label>
+      </div>
+    </div>
+  <% end %>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
