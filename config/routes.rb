@@ -2,7 +2,7 @@ Portfolio::Application.routes.draw do
 
   scope "/admin" do
     resources :projects
-    resources :pictures, :only => [:index, :edit, :update, :destroy]
+    resources :pictures, :only => [:index, :create, :edit, :update, :destroy]
   end
 
   # The priority is based upon order of creation:

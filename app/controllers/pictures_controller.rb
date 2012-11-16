@@ -15,6 +15,10 @@ class PicturesController < ApplicationController
     @picture = Picture.find(params[:id])
   end
 
+  def create
+    @picture = Picture.create(params[:picture])
+  end
+
   # PUT /pictures/1
   # PUT /pictures/1.json
   def update

@@ -19,20 +19,31 @@
 </dl>
 <dl class="dl-horizontal">
   <dt><strong>Imagenes:</strong></dt>
-  <dd>
-  <% @project.pictures.each do |picture| %>
-    <%= image_tag(picture.image_url(:thumb), :class => 'img-rounded') if picture.image? %>
-  <% end %>
+  <dd id="pictures">
+    <% @project.pictures.each do |picture| %>
+      <%= render picture %>
+    <% end %>
   </dd>
 </dl>
+
+<%= form_for Picture.new, :html => { :class => 'form-horizontal' } do |f| %>
+<div class="control-group">
+  <div class="controls">
+    <%= f.file_field :file, multiple: true, name: "picture[file]" %>
+    <%= f.hidden_field :feature_id, :value => @project.id %>
+    <%= f.hidden_field :feature_type, :value =>  "Project" %>
+  </div>
+</div>
+<% end %>
+
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              projects_path, :class => 'btn'  %>
+      projects_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_project_path(@project), :class => 'btn' %>
+      edit_project_path(@project), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              project_path(@project),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+      project_path(@project),
+      :method => 'delete',
+      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+      :class => 'btn btn-danger' %>
 </div>
