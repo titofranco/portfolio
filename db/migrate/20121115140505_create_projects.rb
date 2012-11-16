@@ -6,7 +6,7 @@ class CreateProjects < ActiveRecord::Migration
       t.string :customer_name
       t.string :duration
       t.string :tags
-      t.boolean :status
+      t.boolean :status, default: true
       t.timestamps
     end
   end

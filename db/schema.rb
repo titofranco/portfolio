@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(:version => 20121115160304) do
     t.string   "feature_type"
     t.string   "subtype"
     t.string   "caption"
-    t.string   "status"
+    t.boolean  "status",       :default => true
     t.string   "file"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "projects", :force => true do |t|
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(:version => 20121115160304) do
     t.string   "customer_name"
     t.string   "duration"
     t.string   "tags"
-    t.boolean  "status"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.boolean  "status",        :default => true
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
 end
