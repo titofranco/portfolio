@@ -17,15 +17,19 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @project }
+      format.json { render :json => @project.pictures.collect { |p| p.to_jq_upload }.to_json }
     end
+  end
+
+  def pictures
+    @project = Project.find(params[:project_id])
+    render :json => @project.pictures.collect { |p| p.to_jq_upload }.to_json
   end
 
   # GET /projects/new
   # GET /projects/new.json
   def new
     @project = Project.new
-    @project.pictures.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @project }
@@ -35,7 +39,6 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
-#    @project.pictures.build unless @project.pictures.empty?
   end
 
   # POST /projects

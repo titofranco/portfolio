@@ -17,24 +17,6 @@
   <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
   <dd><%= @project.status %></dd>
 </dl>
-<dl class="dl-horizontal">
-  <dt><strong>Imagenes:</strong></dt>
-  <dd id="pictures">
-    <% @project.pictures.each do |picture| %>
-      <%= render picture %>
-    <% end %>
-  </dd>
-</dl>
-
-<%= form_for Picture.new, :html => { :class => 'form-horizontal' } do |f| %>
-<div class="control-group">
-  <div class="controls">
-    <%= f.file_field :file, multiple: true, name: "picture[file]" %>
-    <%= f.hidden_field :feature_id, :value => @project.id %>
-    <%= f.hidden_field :feature_type, :value =>  "Project" %>
-  </div>
-</div>
-<% end %>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
@@ -47,3 +29,5 @@
       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
       :class => 'btn btn-danger' %>
 </div>
+
+<%= render 'file_upload' %>

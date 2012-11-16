@@ -3,10 +3,8 @@ class PicturesController < ApplicationController
   # GET /pictures.json
   def index
     @pictures = Picture.all
-
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @pictures }
     end
   end
 
@@ -16,7 +14,21 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.create(params[:picture])
+    @picture = Picture.new(params[:picture])
+    if @picture.save
+      respond_to do |format|
+        format.html {
+          render :json => [@picture.to_jq_upload].to_json,
+          :content_type => 'text/html',
+          :layout => false
+        }
+        format.json {
+          render :json => [@picture.to_jq_upload].to_json
+        }
+      end
+    else
+      render :json => [{:error => "custom_failure"}], :status => 304
+    end
   end
 
   # PUT /pictures/1
@@ -40,10 +52,9 @@ class PicturesController < ApplicationController
   def destroy
     @picture = Picture.find(params[:id])
     @picture.destroy
-
     respond_to do |format|
       format.html { redirect_to pictures_url }
-      format.json { head :no_content }
+      format.json {     render :json => true }
     end
   end
 end
