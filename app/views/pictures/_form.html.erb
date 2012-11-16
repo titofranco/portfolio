@@ -18,20 +18,20 @@
   </div>
 </div>
 <div class="control-group">
-  <%= f.label :image, :class => 'control-label' %>
+  <%= f.label :file, :class => 'control-label' %>
   <div class="controls">
-    <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache %>
+    <%= f.file_field :file %>
+    <%= f.hidden_field :file_cache %>
     <label>
-      <%= f.check_box :remove_image %>
-      Remove Image
+      <%= f.check_box :remove_file %>
+      Remove File
     </label>
   </div>
 </div>
 
 <% content_for :sidebar do %>
-      <%= image_tag(f.object.image_url,
-                    :class => 'img-rounded') if f.object.image? %>
+      <%= image_tag(f.object.file_url,
+                    :class => 'img-rounded') if f.object.file? %>
 <% end %>
 
 <div class="form-actions">

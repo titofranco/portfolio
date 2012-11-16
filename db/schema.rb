@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20121115160304) do
     t.string   "subtype"
     t.string   "caption"
     t.string   "status"
-    t.string   "image"
+    t.string   "file"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end

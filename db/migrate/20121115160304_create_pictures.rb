@@ -5,7 +5,7 @@ class CreatePictures < ActiveRecord::Migration
       t.string :subtype
       t.string :caption
       t.string :status
-      t.string :image
+      t.string :file
       t.timestamps
     end
   end
