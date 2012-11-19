@@ -1,0 +1,13 @@
+<div class="mygallery">
+  <div class="tn3 album">
+    <ol>
+      <% @pictures.each do |picture| %>
+        <li>
+          <h4>FOo</h4>
+          <div class="tn3 description"> Bar </div>
+          <%= link_to(image_tag(picture.file.url), picture.file.url ) %>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+</div>
