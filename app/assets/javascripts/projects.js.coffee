@@ -15,15 +15,16 @@ jQuery ->
   # Initialize the jQuery File Upload widget:
   $('#fileupload').fileupload()
 
-  # Load existing files:
-  $.getJSON $('#fileupload').data('images'), (files) ->
+  if $('#fileupload').data('images')?
+    # Load existing files:
+    $.getJSON $('#fileupload').data('images'), (files) ->
 
-    fu = $('#fileupload').data('fileupload')
+      fu = $('#fileupload').data('fileupload')
 
-    fu._adjustMaxNumberOfFiles(-files.length)
-    template = fu._renderDownload(files).appendTo($('#fileupload .files'))
+      fu._adjustMaxNumberOfFiles(-files.length)
+      template = fu._renderDownload(files).appendTo($('#fileupload .files'))
 
-    # Force reflow:
-    fu._reflow = fu._transition and template.length and template[0].offsetWidth
-    template.addClass('in')
-    $('#loading').remove()
+      # Force reflow:
+      fu._reflow = fu._transition and template.length and template[0].offsetWidth
+      template.addClass('in')
+      $('#loading').remove()

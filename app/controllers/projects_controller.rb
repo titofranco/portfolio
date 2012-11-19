@@ -23,7 +23,10 @@ class ProjectsController < ApplicationController
 
   def pictures
     @project = Project.find(params[:project_id])
-    render :json => @project.pictures.collect { |p| p.to_jq_upload }.to_json
+    respond_to do |format|
+      format.json { render :json => @project.pictures.collect { |p| p.to_jq_upload }.to_json }
+      format.html
+    end
   end
 
   # GET /projects/new
