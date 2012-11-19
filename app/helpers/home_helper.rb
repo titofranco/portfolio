@@ -3,7 +3,7 @@ module HomeHelper
 
   def project_cover(project)
     cover = project.pictures.where(:subtype => 'cover' ).first
-    link_to( image_tag(cover.file.url, class:"img-polaroid", "data-id" => project.id), project_url(project)) if cover
+    link_to( image_tag(cover.file.url, class:"img-polaroid", "data-id" => project.id), show_project_url(project)) if cover
   end
 
   def project_customer_name(project)

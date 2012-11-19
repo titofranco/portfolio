@@ -4,9 +4,10 @@ class HomeController < ApplicationController
     @projects = Project.all
   end
 
-  def project
+  def show_project
     @projects = Project.where(params[:id])
     @pictures = Project.find(params[:id]).pictures
+    render 'project'
   end
 
 end

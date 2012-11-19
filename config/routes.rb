@@ -8,7 +8,7 @@ Portfolio::Application.routes.draw do
   end
 
   match "home" => "home#index"
-  match "home/project/:id" => "home#project", :as => :project
+  match "home/show_project/:id" => "home#show_project"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
