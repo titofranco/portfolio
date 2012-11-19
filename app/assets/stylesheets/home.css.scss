@@ -2,13 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .cover {
-    height: 300px;
+    height: 460px;
     width: 500px;
-    margin: 20px 20px 100px 20px;
+    margin: 20px;
 }
 
 ul.project_info {
     display: none;
+    position: fixed;
+    width: 270px;
     li {
         list-style: none;
         &:last-child {
