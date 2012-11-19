@@ -6,7 +6,9 @@ Portfolio::Application.routes.draw do
     end
     resources :pictures, :only => [:index, :create, :edit, :update, :destroy]
   end
-  resources :home, :only => [:index, :show]
+
+  match "home" => "home#index"
+  match "home/project/:id" => "home#project", :as => :project
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

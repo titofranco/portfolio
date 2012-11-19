@@ -1,3 +1,9 @@
 <% @projects.each do |project| %>
- <%=  project_cover(project) %>
+  <div class="cover">
+    <h3><%= project.title %></h3>
+    <%= project_cover(project) %>
+    <i class="icon-tags"><%= project.tags %></i>
+  </div>
 <% end %>
+
+<%= render "project_info" %>

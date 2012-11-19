@@ -1,3 +1,18 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.cover {
+    height: 300px;
+    width: 500px;
+    margin: 20px 20px 100px 20px;
+}
+
+ul.project_info {
+    display: none;
+    li {
+        list-style: none;
+        &:last-child {
+            margin-bottom: 40px;
+        }
+    }
+}

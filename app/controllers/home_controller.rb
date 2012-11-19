@@ -4,7 +4,8 @@ class HomeController < ApplicationController
     @projects = Project.all
   end
 
-  def show
+  def project
+    @projects = Project.where(params[:id])
     @pictures = Project.find(params[:id]).pictures
   end
 

@@ -1,10 +1,11 @@
+<%= render "project_info" %>
+
 <div class="mygallery">
   <div class="tn3 album">
     <ol>
       <% @pictures.each do |picture| %>
         <li>
-          <h4>FOo</h4>
-          <div class="tn3 description"> Bar </div>
+          <div class="tn3 description"> <%= picture.caption %> </div>
           <%= link_to(image_tag(picture.file.url), picture.file.url ) %>
         </li>
       <% end %>

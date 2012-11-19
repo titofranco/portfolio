@@ -1,0 +1,14 @@
+<% content_for :sidebar do %>
+
+  <% @projects.each do |project| %>
+    <ul class="project_info" data-id="<%= project.id %>">
+
+      <h1><%= project.title %></h1>
+      <li><%= project.description %></li>
+      <%= project_customer_name(project) %>
+      <%= project_duration(project) %>
+    </ul>
+
+  <% end %>
+
+<% end %>
