@@ -1,5 +1,7 @@
 Portfolio::Application.routes.draw do
 
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
+
   scope "/admin" do
     resources :projects do
         get 'pictures'
@@ -8,7 +10,7 @@ Portfolio::Application.routes.draw do
   end
 
   match "home" => "home#index"
-  match "home/show_project/:id" => "home#show_project"
+  match "home/show_project/:id" => "home#show_project", :as => :show_project
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
